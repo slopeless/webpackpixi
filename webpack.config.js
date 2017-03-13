@@ -37,12 +37,35 @@ module.exports = {
 	},
 	output: {
 		path: path.resolve(__dirname, "build"),
-		// publicPath: "/assets/",
+		// publicPath: path.resolve(__dirname, "../assets"),
 		filename: "bundle.js"
 	},
-	watch: true
+
+	module: {
+		rules: [
+			// {	
+			// 	test: /\.json$/, 
+			// 	use: 'json'
+			// },
+			// {
+			// 	enforce: "post",
+		 //        include: path.resolve(__dirname, 'node_modules/pixi.js'),
+		 //        use: 'transform?brfs'
+			// }
+		]
+	},
+
+
+
+	// watch: true
 
 };
+
+
+//./node_modules/.bin/webpack
+// webpack-dev-server --inline --progress --port 8888
+
+
 
 
 // var path = require('path');

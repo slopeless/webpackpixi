@@ -18,6 +18,7 @@
     "webpack": "^2.0.0"
   },
   "devDependencies": {
+    "shelljs": "^0.7.7",
     "webpack-dev-server": "^2.4.1"
   }
 }
