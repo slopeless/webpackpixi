@@ -3,25 +3,64 @@ console.log('Hello from Webpack port');
 var PIXI = require('pixi.js')
 console.log(PIXI)
 
-var app = new PIXI.Application(800, 600, {backgroundColor : 0x1099bb});
+// var app = new PIXI.Application(800, 600, {backgroundColor : 0x1099bb});
+// document.body.appendChild(app.view);
+
+// // create a new Sprite from an image path
+// var bunny = PIXI.Sprite.fromImage('assets/bunny.png')
+
+// // center the sprite's anchor point
+// bunny.anchor.set(0.5);
+
+// // move the sprite to the center of the screen
+// bunny.x = app.renderer.width / 2;
+// bunny.y = app.renderer.height / 2;
+
+// app.stage.addChild(bunny);
+
+// // Listen for animate update
+// app.ticker.add(function(delta) {
+//     // just for fun, let's rotate mr rabbit a little
+//     // delta is 1 if running at 100% performance
+//     // creates frame-independent tranformation
+//     bunny.rotation += 0.1 * delta;
+// });
+
+var app = new PIXI.Application();
 document.body.appendChild(app.view);
 
-// create a new Sprite from an image path
-var bunny = PIXI.Sprite.fromImage('assets/bunny.png')
+// Create background image
+var background = PIXI.Sprite.fromImage("assets/bkg-grass.jpg");
+background.width = app.renderer.width;
+background.height = app.renderer.height;
+app.stage.addChild(background);
 
-// center the sprite's anchor point
-bunny.anchor.set(0.5);
+// Stop application wait for load to finish
+app.stop();
 
-// move the sprite to the center of the screen
-bunny.x = app.renderer.width / 2;
-bunny.y = app.renderer.height / 2;
+PIXI.loader.add('shader', 'assets/shader.frag')
+    .load(onLoaded);
 
-app.stage.addChild(bunny);
+var filter;
 
-// Listen for animate update
+// Handle the load completed
+function onLoaded (loader,res) {
+
+    // Create the new filter, arguments: (vertexShader, framentSource)
+    filter = new PIXI.Filter(null, res.shader.data);
+
+    // Add the filter
+    background.filters = [filter];
+
+    // Resume application update
+    app.start();
+}
+
+// Animate the filter
 app.ticker.add(function(delta) {
-    // just for fun, let's rotate mr rabbit a little
-    // delta is 1 if running at 100% performance
-    // creates frame-independent tranformation
-    bunny.rotation += 0.1 * delta;
+    filter.uniforms.customUniform += 0.04 * delta;
 });
+
+
+
+
