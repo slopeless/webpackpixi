@@ -1,3 +1,4 @@
+var webpack = require('webpack');
 const path = require('path');
 // const HtmlWebpackPlugin = require('html-webpack-plugin');
 
@@ -33,12 +34,13 @@ const PATHS = {
 
 module.exports = {
 	entry: {
-		app: ["./app/main.js"]
+		vendor: ['pixi.js'],
+		app: ["./app/main.js"],
 	},
 	output: {
 		path: path.resolve(__dirname, "build"),
 		// publicPath: path.resolve(__dirname, "../assets"),
-		filename: "bundle.js"
+		filename: "[name].bundle.js"
 	},
 
 	module: {
@@ -54,6 +56,12 @@ module.exports = {
 			// }
 		]
 	},
+
+	plugins: [
+      new webpack.optimize.CommonsChunkPlugin({
+        name: 'vendor',
+      }),
+	],
 
 
 
