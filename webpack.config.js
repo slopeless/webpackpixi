@@ -63,26 +63,9 @@ module.exports = {
       }),
 	],
 
-
-
 	// watch: true
-
 };
 
 
-//./node_modules/.bin/webpack
-// webpack-dev-server --inline --progress --port 8888
 
 
-
-
-// var path = require('path');
-
-// module.exports = {
-// 	devtool: 'cheap-source-map',
-// 	entry: './src/app.js',
-// 	output: {
-//     	filename: 'bundle.js',
-//     	path: path.resolve(__dirname, 'dist')
-// 	}
-// };
