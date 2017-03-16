@@ -4,7 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "webpack-dev-server --progress --colors --port 1234",
+    "start": "webpack-dev-server --progress --colors --port 1234 --content-base build/",
     "build": "webpack",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
