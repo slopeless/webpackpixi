@@ -1,6 +1,7 @@
 console.log('Hello from Webpack port');
 
 var PIXI = require('pixi.js')
+import Rectangle from './Rectangle'
 // console.log(PIXI)
 
 // var app = new PIXI.Application(800, 600, {backgroundColor : 0x1099bb});
@@ -54,6 +55,11 @@ function onLoaded (loader,res) {
 
     // Resume application update
     app.start();
+
+    var hmm = new Rectangle(4,6);
+    let hmm2 = 5;
+    console.log('try let');
+
 }
 
 // Animate the filter
