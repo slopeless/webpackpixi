@@ -4,7 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "webpack-dev-server --progress --colors --port 1234 --content-base build/",
+    "start": "webpack-dev-server --progress --colors --port 1234",
 	"babel": "babel --presets es2015 app/main.js -o build/main.bundle.js",    
     "build": "webpack",
     "test": "echo \"Error: no test specified\" && exit 1"
