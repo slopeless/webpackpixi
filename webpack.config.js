@@ -22,7 +22,7 @@ module.exports = {
 	output: {
 		path: __dirname,
 		filename: "[name].bundle.js",
-	// 	publicPath: "../assets"
+		// publicPath: path.resolve(__dirname, "assets"),
 	},
 
 	context: __dirname,
@@ -30,10 +30,11 @@ module.exports = {
 	devServer: {
 
 	    // contentBase: path.resolve(__dirname, "build"),
-	//    contentBase: path.resolve(__dirname, "build"),
+	   contentBase: [__dirname, path.resolve(__dirname, "assets")],
+	   watchContentBase: true,
 	    // match the output path
 
-//	    publicPath: path.resolve(__dirname, "build"),
+	    // publicPath: path.resolve(__dirname, "assets"),
 	    // match the output `publicPath`
 
 	  },

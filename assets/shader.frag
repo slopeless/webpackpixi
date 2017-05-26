@@ -13,7 +13,7 @@ void main(void)
    vec4 fg = texture2D(uSampler, vTextureCoord);
 
 
-   fg.r = uvs.y + sin(customUniform);
+   fg.b= uvs.y + sin(customUniform);
 
    //fg.r = clamp(fg.r,0.0,0.9);
 

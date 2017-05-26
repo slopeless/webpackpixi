@@ -27,8 +27,12 @@ import Rectangle from './Rectangle'
 //     bunny.rotation += 0.1 * delta;
 // });
 
-var app = new PIXI.Application();
-document.body.appendChild(app.view);
+//only create a new app on first run thru...
+if(window.pixiApp == null){
+	window.pixiApp = new PIXI.Application();
+	document.body.appendChild(window.pixiApp.view);
+}
+var app = window.pixiApp;
 
 // Create background image
 var background = PIXI.Sprite.fromImage("assets/bkg-grass.jpg");
@@ -58,18 +62,23 @@ function onLoaded (loader,res) {
 
     var hmm = new Rectangle(4,6);
     let hmm2 = 5;
-    console.log('onLoaded stuff hot 4');
+    console.log('onLoaded stuff hot 2');
 
 }
 
+function clearPixiResource(name){
+	PIXI.loader.resources[name] = null;
+}
 
-// if(module.hot) {
-// 	module.hot.accept("./main.js", function() {
-// 		console.log('module hot accept');
-// 	});
-// }
+//https://webpack.github.io/docs/hot-module-replacement.html  --wrong version but best i can find
 
 if(module.hot) {
+	module.hot.dispose(function(obj){
+		console.log("hot.dispose 3!!");
+		app.stage.removeChildren();
+		clearPixiResource("shader");
+
+	});
 	module.hot.accept(function(err) {
 		console.log("hot relaod!!");
 		if(err) {
