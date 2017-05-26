@@ -1,4 +1,4 @@
-console.log('Hello from Webpack port');
+console.log('Hello from Webpack test thingy');
 
 var PIXI = require('pixi.js')
 import Rectangle from './Rectangle'
@@ -58,9 +58,27 @@ function onLoaded (loader,res) {
 
     var hmm = new Rectangle(4,6);
     let hmm2 = 5;
-    console.log('try let');
+    console.log('onLoaded stuff hot 4');
 
 }
+
+
+// if(module.hot) {
+// 	module.hot.accept("./main.js", function() {
+// 		console.log('module hot accept');
+// 	});
+// }
+
+if(module.hot) {
+	module.hot.accept(function(err) {
+		console.log("hot relaod!!");
+		if(err) {
+			console.error("Cannot apply hot update", err);
+		}
+	});
+}
+
+
 
 // Animate the filter
 app.ticker.add(function(delta) {

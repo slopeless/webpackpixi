@@ -4,6 +4,12 @@ The idea was to check that webpack and pixijs work together.
 And then to play around with pixijs fragment/vertex shaders
 
 
+hot reloading, very basic bit is working:
+npm run dev
+this opens a browser window with the project being watched...
+
+
+
 
 TODOs:
 hot reloading?
@@ -11,7 +17,7 @@ html file generation
 publicPath for the assets (so assets arent under 'build')
 remove  '--content-base build/' from package.json and it to a config file? 
 
-
+BROEKN for NOW...
 Mimimal start:
 terminal: npm start
 browser: http://localhost:1234/
